@@ -10,6 +10,14 @@ def make(num:str) ->str:
             result += a[i]
     return result
 def divide(num:str) -> None:
+    try:
+        int(num)
+    except ValueError:
+        return '숫자가 아닙니다'
+    isMinus = False
+    if num[0] == '-':
+        isMinus = True
+        num = num[1:]
     a = ['', '만', '억', '조', '경', '해', '서', '양', '구', '간', '정', '재', '극', '항아사', '아승기', '나유타', '불가사의']
     result = ''
     while len(num)%4:
@@ -19,9 +27,12 @@ def divide(num:str) -> None:
         b.append(num[4*i:4*(i+1)])
     for i in range(len(b)):
         result = make(b[-i-1]) + a[i] + result
-    for i in range(len(a)-2):
+    for i in range(len(a)-2):#bad algorithm..
         result = result.replace(a[i+1] + a[i+2], a[i+2])
-    return result
+    if isMinus:
+        return '마이너스' + result
+    else:
+        return result
 
 print(divide(num))
     
