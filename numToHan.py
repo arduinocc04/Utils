@@ -1,4 +1,4 @@
-num = input()
+
 def make(num:str) ->str:
     han = ['일', '이', '삼', '사', '오', '육', '칠', '팔', '구']
     a = ['천', '백', '십', '']
@@ -34,5 +34,6 @@ def divide(num:str) -> None:
     else:
         return result
 
-print(divide(num))
-    
+if __name__ == '__main__':
+    num = input()
+    print(divide(num))
